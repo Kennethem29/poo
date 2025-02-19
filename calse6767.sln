@@ -1,22 +1,44 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calse6767", "calse6767\calse6767.csproj", "{388E0984-0CF0-4BC5-896B-5542882C097C}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{388E0984-0CF0-4BC5-896B-5542882C097C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{388E0984-0CF0-4BC5-896B-5542882C097C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{388E0984-0CF0-4BC5-896B-5542882C097C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{388E0984-0CF0-4BC5-896B-5542882C097C}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+using System;
+
+class Estudiante
+{
+    // Atributos
+    public string Nombre { get; set; }
+    public int Edad { get; set; }
+    public string Carrera { get; set; }
+
+    // Constructor
+    public Estudiante(string nombre, int edad, string carrera)
+    {
+        this.Nombre = nombre;
+        this.Edad = edad;
+        this.Carrera = carrera;
+    }
+
+    // Método para mostrar los datos del estudiante
+    public string MostrarDatos()
+    {
+        return $"Nombre: {this.Nombre}, Edad: {this.Edad}, Carrera: {this.Carrera}";
+    }
+
+    // Método para verificar si es mayor de edad
+    public bool MayorMenorEdad()
+    {
+        return this.Edad >= 18;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Crear una instancia de Estudiante
+        Estudiante estudiante1 = new Estudiante("Juan Pérez", 20, "Ingeniería Informática");
+
+        // Mostrar los datos del estudiante
+        Console.WriteLine(estudiante1.MostrarDatos());
+
+        // Verificar si es mayor de edad
+        Console.WriteLine("¿Es mayor de edad? " + estudiante1.MayorMenorEdad());
+    }
+}
