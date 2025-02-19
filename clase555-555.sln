@@ -1,22 +1,79 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clase555-555", "clase555-555\clase555-555.csproj", "{51E9C713-40CF-4A27-A3A3-ADA5D03ED3FF}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{51E9C713-40CF-4A27-A3A3-ADA5D03ED3FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51E9C713-40CF-4A27-A3A3-ADA5D03ED3FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51E9C713-40CF-4A27-A3A3-ADA5D03ED3FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51E9C713-40CF-4A27-A3A3-ADA5D03ED3FF}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+using System;
+
+class Calculadora
+{
+    static void Main()
+    {
+        Console.WriteLine("=== Bienvenido a la Calculadora ===");
+
+        while (true)
+        {
+            try
+            {
+                Console.Write("Ingrese el primer número: ");
+                double num1 = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Ingrese el segundo número: ");
+                double num2 = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Seleccione una operación:");
+                Console.WriteLine("+ para Sumar");
+                Console.WriteLine("- para Restar");
+                Console.WriteLine("* para Multiplicar");
+                Console.WriteLine("/ para Dividir");
+                Console.WriteLine("0 para Salir");
+                Console.Write("Operación: ");
+                string operacion = Console.ReadLine();
+
+                if (operacion == "0")
+                {
+                    Console.WriteLine("¡Gracias por usar la calculadora!");
+                    break;
+                }
+
+                switch (operacion)
+                {
+                    case "+":
+                        Console.WriteLine($"Resultado: {num1} + {num2} = {num1 + num2}");
+                        break;
+                    case "-":
+                        Console.WriteLine($"Resultado: {num1} - {num2} = {num1 - num2}");
+                        break;
+                    case "*":
+                        Console.WriteLine($"Resultado: {num1} * {num2} = {num1 * num2}");
+                        break;
+                    case "/":
+                        if (num2 != 0)
+                        {
+                            Console.WriteLine($"Resultado: {num1} / {num2} = {num1 / num2}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error: No se puede dividir entre cero.");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Operación no válida. Intente nuevamente.");
+                        break;
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Por favor, ingrese valores numéricos válidos.");
+            }
+
+            Console.WriteLine(); // Línea en blanco para mejorar la legibilidad
+            Console.WriteLine("¿Desea realizar otra operación? (s/n)");
+            string continuar = Console.ReadLine().ToLower();
+
+            if (continuar != "s")
+            {
+                Console.WriteLine("¡Hasta pronto!");
+                break;
+            }
+
+            Console.Clear(); // Limpia la pantalla para una mejor experiencia
+        }
+    }
+}
+
